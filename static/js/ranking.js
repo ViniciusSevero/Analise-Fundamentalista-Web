@@ -1,5 +1,8 @@
+
+const backendUrl = window.location.origin
+
 const getRanking = (selectedIndicators) => {
-    let url = 'http://localhost:5000/ranking?'
+    let url = `${backendUrl}/ranking?`
     selectedIndicators.forEach(i => {
         url += `&indicators[]=${i}`
     })

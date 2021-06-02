@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- Home CSS -->
+    <link href="{{ url_for('static', filename='css/ranking.css') }}" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- Home JS -->
+    <script src="{{ url_for('static', filename='js/ranking.js') }}"></script>
+
+    <title>Analise Fundamentalista</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Análise Fundamentalista</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Ranking</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="row">
+                    <ul class="list-group">
+                        <li class="list-group-item tecnique" data-indicators="ev_bit,roic">magic</li>
+                        <li class="list-group-item tecnique" data-indicators="ev_bit,roic,cagr">magic_lucros</li>
+                        <li class="list-group-item tecnique" data-indicators="queda_max,pl,pvp">baratas</li>
+                        <li class="list-group-item tecnique" data-indicators="dvlp,liqcorrente,cagr">solidas</li>
+                        <li class="list-group-item tecnique" data-indicators="pl,pvp,liqcorrente,roe,cagr">mix</li>
+                        <li class="list-group-item tecnique" data-indicators="cagr,dy">dividendos</li>
+                        <li class="list-group-item tecnique" data-indicators="pl,pvp,dy">grahan</li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1 indicator" type="checkbox" value="ev_bit">
+                            EV/EBIT
+                        </li>
+                        
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1 indicator" type="checkbox" value="roic">
+                            roic
+                        </li>
+                        
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1 indicator" type="checkbox" value="cagr">
+                            cagr
+                        </li>
+                        
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1 indicator" type="checkbox" value="queda_max">
+                            Queda Max.
+                        </li>
+                        
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1 indicator" type="checkbox" value="pl">
+                            PL
+                        </li>
+                        
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1 indicator" type="checkbox" value="pvp">
+                            PVP
+                        </li>
+                        
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1 indicator" type="checkbox" value="dvlp">
+                            Div. Liq / Patrimônio
+                        </li>
+                        
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1 indicator" type="checkbox" value="liqcorrente">
+                            Liquidez Corrente
+                        </li>
+                        
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1 indicator" type="checkbox" value="roe">
+                            ROE
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input indicator" type="checkbox" value="dy">
+                            Dividend Yield
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <div class="col-8">
+                <img class="loading d-none" src="{{ url_for('static', filename='img/loading.gif') }}">
+                <table class="table table-bordered">
+                </table>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>

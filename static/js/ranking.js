@@ -19,13 +19,29 @@ const getRanking = (selectedIndicators) => {
     });
 }
 
+const indicatorName = {
+    'eV_Ebit': 'EV/EBIT',
+    'roic': 'ROIC',
+    'lucros_Cagr5': 'CAGR 5 Anos',
+    'queda_max': 'Queda Max.',
+    'p_L': 'P/L',
+    'p_VP': 'P/VP',
+    'dividaliquidaPatrimonioLiquido': 'Div Líqui. Patrim. Liq',
+    'liquidezCorrente': 'Liq. Corrente',
+    'roe': 'ROE',
+    'dy': 'Dividend Yield',
+    'maxValue': 'Valor Máx.',
+    'ticker': 'Ticker',
+}
+
 const popularTabela = (data) => {
     const popularCabecalho = (data) => {
         let thead = document.createElement('thead')
         let tr = document.createElement('tr')
         for(i in data.columns) {
             let th = document.createElement('th')
-            th.innerHTML = data.columns[i]
+            const value = data.columns[i]
+            th.innerHTML = value in indicatorName ? indicatorName[value] : value
             tr.appendChild(th)
         }
         thead.appendChild(tr)

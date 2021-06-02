@@ -1,0 +1,12 @@
+img.loading {
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+td svg {
+    display: block;
+    margin: 0 auto;
+}

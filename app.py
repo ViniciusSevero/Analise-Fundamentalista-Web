@@ -20,6 +20,10 @@ engine = create_engine("postgresql://{user}:{pw}@{host}:{port}/{db}"
 def index():
     return render_template('ranking.html')
 
+@app.route('/matrix', methods=['GET'])
+def matrix():
+    return render_template('matrix.html')
+
 @app.route('/ranking', methods=['GET'])
 def ranking():
     indicators = request.args.getlist('indicators[]')
@@ -30,6 +34,17 @@ def ranking():
         mimetype='application/json'
     )
     return response
+
+@app.route('/bool-matrix', methods=['GET'])
+def boolean_matrix():
+    data = get_boolean_matrix()
+    response = app.response_class(
+        response=data,
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
 
 def get_indicators_ranking(indicators_list):
     result = pd.DataFrame(data = [])
@@ -48,6 +63,10 @@ def get_indicators_ranking(indicators_list):
     result.insert(len(result.columns), col_rank.name, col_rank)
     result = result.sort_values(by='rank', ascending=False).head(20)
     return result.to_json(orient="split")
+
+def get_boolean_matrix():
+    df = pd.read_sql("SELECT * FROM boolean_matrix", con=engine)
+    return df.to_json(orient="split")
 
 
 if __name__ == '__main__':
